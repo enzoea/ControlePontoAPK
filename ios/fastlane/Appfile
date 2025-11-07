@@ -1,0 +1,5 @@
+app_identifier("org.reactjs.native.example.PontoProz")
+apple_id("your-apple-id@example.com")
+
+# You can set team_id later or via environment variables when building.
+# team_id("YOUR_APPLE_TEAM_ID")

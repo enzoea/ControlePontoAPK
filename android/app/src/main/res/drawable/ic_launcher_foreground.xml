@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer white circle (approx via cubic Béziers) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,16
+            C75,16 92,33 92,54
+            C92,75 75,92 54,92
+            C33,92 16,75 16,54
+            C16,33 33,16 54,16 Z"/>
+    <!-- Inner black circle to create ring (approx via cubic Béziers) -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M54,32
+            C66,32 76,42 76,54
+            C76,66 66,76 54,76
+            C42,76 32,66 32,54
+            C32,42 42,32 54,32 Z"/>
+    <!-- Top white bar -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,12 L78,12 L78,24 L30,24 Z"/>
+</vector>

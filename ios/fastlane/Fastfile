@@ -1,0 +1,22 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build iOS .ipa (development, automatic signing)"
+  lane :build_ipa do
+    # Install CocoaPods
+    cocoapods
+
+    # Build and export the .ipa
+    gym(
+      scheme: "PontoProz",
+      configuration: "Release",
+      clean: true,
+      export_method: "development",
+      output_directory: "build/ipa",
+      output_name: "PontoProz.ipa",
+      include_symbols: false,
+      include_bitcode: false,
+      silent: false
+    )
+  end
+end
