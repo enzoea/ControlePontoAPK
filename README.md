@@ -1,4 +1,54 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+- Aplicativo mobile (Android/iOS) para gestão de ponto por ciclo, ajudando a registrar presença, faltas e substituições por turno (manhã, tarde, noite), com exportação de relatórios.
+- Baseado em React Native com navegação por stacks, interface simples e focada nas tarefas do usuário.
+Tecnologias
+
+- Framework: react-native 0.82 e react 19.
+- Navegação: @react-navigation/native e native-stack .
+- Persistência local: realm para armazenamento dos lançamentos.
+- Datas: dayjs com timezone America/Sao_Paulo .
+- Exportação: xlsx (Excel) e HTML→PDF via react-native-html-to-pdf .
+- UI/gestos: react-native-safe-area-context , react-native-gesture-handler , react-native-screens .
+Funcionalidades Principais
+
+- Home: ponto de entrada com acesso às funções do app.
+- Preenchimento Mensal: aplica presenças por dia/turno dentro do ciclo atual, com regras (ex.: não aplicar em finais de semana).
+- Registrar Falta: marca faltas em dias/turnos selecionados, com opção de sobrescrever registros existentes.
+- Registrar Substituição:
+  - Define substituído por e observações gerais.
+  - Marca substituições por turno com observações específicas (manhã/tarde/noite).
+- Verificar Informações:
+  - Lista todos os lançamentos do ciclo (tabela com status por turno).
+  - Exporta relatório do ciclo em XLSX e PDF, incluindo totais de presenças/faltas/substituições e seção de substituições detalhada quando houver.
+- Estimativa de Salário: tela dedicada, integrada ao fluxo do app.
+- Reset/limpeza:
+  - Remove lançamentos vazios para manter o banco limpo.
+  - Limpa status por tipo no ciclo (presença/falta/substituição), preservando campos quando necessário.
+Modelo de Dados
+
+- Entidade Lancamento : dataISO , cicloInicioISO , cicloFimISO , status por turno ( presenca / falta / substituicao ), substituidoPor , observações gerais e por turno, createdAt / updatedAt .
+- Metadados de ciclo: inicioISO e fimISO , calculados dinamicamente conforme regra do dia 16 a 15 do mês seguinte.
+Arquitetura
+
+- Navegação: stack navigator com telas Home , EstimativaSalario , PreenchimentoMensal , RegistrarFalta , RegistrarSubstituicao , VerificarInformacoes .
+- Organização por pastas:
+  - src/app/screens : cada tela com index.tsx , styles.ts , e interfaces.ts .
+  - src/app/components : componentes reutilizáveis (ex.: ActionCard , AppButton , InlineHeader , TabelaCiclo , CalendarCiclo , DiaTurnosPicker , LabeledInput ).
+  - src/core : lógica de ciclo e tipos de domínio.
+  - src/data : persistência ( db.ts ) e exportações ( exportExcel.ts , exportPdf.ts ).
+Diferenciais
+
+- Exportações robustas:
+  - XLSX: planilha com dias do ciclo e colunas por turno, suportando ✔️ e observações.
+  - PDF: relatório formatado com tabela, totais e seção de substituições detalhada.
+- Regras de negócio:
+  - Aplica/limpa status respeitando finais de semana.
+  - Evita sobrescrever com null durante atualizações parciais.
+  - Limpeza automática de observações quando não há mais substituições.
+Estado Atual
+
+- Projeto configurado com toolchain moderno (RN 0.82, Node >= 20).
+- Telas e componentes organizados por responsabilidade, com navegação e tema base prontos.
+- Mecanismos de exportação e persistência funcionalmente implementados.
 
 # Getting Started
 
